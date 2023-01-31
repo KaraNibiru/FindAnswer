@@ -30,11 +30,11 @@ while (number > -1)
 
 Dictionary<string, int> GetSummary(IEnumerable<int> items)
 {
-    IEnumerable<KeyValuePair<string, int>> summary = new Dictionary<string, int>();
     IEnumerable<KeyValuePair<string, int>> mass =
         items.Select(x => KeyValuePair.Create(x.ToString(), x));
+    IEnumerable<KeyValuePair<string, int>> summary = GetSummaryCount(mass, 1);
 
-    for (int i = 1; i <= items.Count(); i++)
+    for (int i = 2; i <= items.Count(); i++)
         summary = summary.Concat(GetSummaryCount(mass, i));
 
     Dictionary<string, int> result = new Dictionary<string, int>();
